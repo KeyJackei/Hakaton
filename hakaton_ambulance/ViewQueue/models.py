@@ -2,7 +2,6 @@ from django.http import HttpResponse
 from django.template import Context, loader
 from django.db import models
 
-from hakaton_ambulance.BaseTables import models
 
 
 class QueueHTMLRenderer:
@@ -17,7 +16,3 @@ class QueueHTMLRenderer:
         # Рендеринг шаблона с данными
         rendered_template = template.render(context)
         return HttpResponse(rendered_template)
-
-class Queue(models.Model):
-    id_queue =
-
