@@ -6,7 +6,7 @@ class QueueHTMLRenderer:
         self.queue_data = queue_data
 
     def render(self):
-        # Загрузка шаблона HTML F3F32F2323
+        # Загрузка шаблона HTML
         template = loader.get_template('queue_template.html')
         # Создание контекста для передачи данных в шаблон
         context = Context({'queue_data': self.queue_data})
