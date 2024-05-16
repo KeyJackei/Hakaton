@@ -2,6 +2,9 @@ from django.http import HttpResponse
 from django.template import Context, loader
 from django.db import models
 
+from hakaton_ambulance.BaseTables import models
+
+
 class QueueHTMLRenderer:
     def __init__(self, queue_data):
         self.queue_data = queue_data
@@ -15,8 +18,6 @@ class QueueHTMLRenderer:
         rendered_template = template.render(context)
         return HttpResponse(rendered_template)
 
-class Specialist(models.Model):
-    name = models.CharField(max_length=100)
+class Queue(models.Model):
+    id_queue =
 
-    def __str__(self):
-        return self.name
