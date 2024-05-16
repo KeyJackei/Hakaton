@@ -37,9 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # другие приложения
-    'hakaton_ambulance',
-    'ViewQueue',
+    'BaseTables',
+    'ViewQueue'
 ]
 
 MIDDLEWARE = [
