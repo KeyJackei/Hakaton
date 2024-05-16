@@ -19,5 +19,5 @@ class Patient(models.Model):
     id_patient = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     age = models.IntegerField()
-    snils = models.IntegerField()
-    polis = models.IntegerField()
+    snils = models.CharField(max_length=16)
+    polis = models.CharField(max_length=16)
