@@ -4,8 +4,8 @@ from django.db import models
 # Create your models here.
 class Interval(models.Model):
     id_interval = models.AutoField(primary_key=True)
-    time_start = models.DateTimeField()
-    time_end = models.DateTimeField()
+    time_start = models.TimeField()
+    time_end = models.TimeField()
 
 
 class Cabinet(models.Model):
