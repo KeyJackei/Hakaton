@@ -1,0 +1,79 @@
+<!-- appointments/templates/appointments/form.html -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись в очередь</title>
+    <link rel="stylesheet" href="{% static 'appointments/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Запись в очередь</h1>
+        <form id="appointmentForm">
+            <div class="form-group">
+                <label for="fullname">ФИО:</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Возраст:</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="snils">СНИЛС:</label>
+                <input type="text" id="snils" name="snils" required>
+            </div>
+            <div class="form-group">
+                <label for="policyNumber">Номер полиса:</label>
+                <input type="text" id="policyNumber" name="policyNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="specialist">Выбор специалиста:</label>
+                <select id="specialist" name="specialist" required>
+                    {% for specialist in specialists %}
+                        <option value="{{ specialist.special }}">{{ specialist.special }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="appointmentDate">Выбор даты:</label>
+                <input type="date" id="appointmentDate" name="appointmentDate" required>
+            </div>
+            <div class="form-group">
+                <label for="appointmentTime">Выбор времени:</label>
+                <input type="time" id="appointmentTime" name="appointmentTime" required>
+            </div>
+            <button type="submit">Записаться</button>
+        </form>
+
+        <div id="ticket" class="ticket">
+            <h2>Ваш талон</h2>
+            <p><strong>ФИО:</strong> <span id="ticketFullname"></span></p>
+            <p><strong>Возраст:</strong> <span id="ticketAge"></span></p>
+            <p><strong>СНИЛС:</strong> <span id="ticketSnils"></span></p>
+            <p><strong>Номер полиса:</strong> <span id="ticketPolicyNumber"></span></p>
+            <p><strong>Специалист:</strong> <span id="ticketSpecialist"></span></p>
+            <p><strong>Дата:</strong> <span id="ticketAppointmentDate"></span></p>
+            <p><strong>Время:</strong> <span id="ticketAppointmentTime"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            document.getElementById('ticketFullname').textContent = document.getElementById('fullname').value;
+            document.getElementById('ticketAge').textContent = document.getElementById('age').value;
+            document.getElementById('ticketSnils').textContent = document.getElementById('snils').value;
+            document.getElementById('ticketPolicyNumber').textContent = document.getElementById('policyNumber').value;
+            document.getElementById('ticketSpecialist').textContent = document.getElementById('specialist').value;
+            document.getElementById('ticketAppointmentDate').textContent = new Date(document.getElementById('appointmentDate').value).toLocaleDateString();
+            document.getElementById('ticketAppointmentTime').textContent = document.getElementById('appointmentTime').value;
+
+            document.getElementById('ticket').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
